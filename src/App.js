@@ -8,11 +8,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>there is nothing here</p>
         <Header />
         <Nav />
         <Routes>
-          <Route path="/reviews" element={<AllReviews />}/>
+          <Route path="/reviews" element={<AllReviews />} />
         </Routes>
       </header>
     </div>

@@ -1,19 +1,17 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
-import { useParams } from 'react-router-dom'
 import AllReviewsCard from "./allReviewsCard"
 
 
 const AllReviews = () => {
-    const params = useParams()
     const [loading, setLoading] = useState(true)
-    const [item, setItem] = useState([])
+    const [reviews, setReviews] = useState([])
     useEffect(() => {
         setLoading(true)
         axios
             .get('https://nc-games-site.herokuapp.com/api/reviews')
             .then(({ data }) => {
-                setItem(data.reviews)
+                setReviews(data.reviews)
                 setLoading(false)
             })
     }, [])
@@ -21,9 +19,9 @@ const AllReviews = () => {
     if (loading) return <div class="loader"></div>
     return (
         <div>
-            <h3>all reviews</h3>
+            <h2>all reviews</h2>
             <div class="container">
-                {item.map(
+                {reviews.map(
                     ({
                         review_id,
                         title,
