@@ -1,35 +1,40 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
+import CommentAdder from "../AddComment/CommentAdder"
 import CommentsCard from "./CommentsCard"
 
 
 const Comments = ({ review_id }) => {
-    let id = review_id.review_id
 
     const [loading, setLoading] = useState(true)
     const [isError, setIsError] = useState(false)
+    const [noComments, setNoComments] = useState(false)
     const [comment, setComments] = useState([])
     useEffect(() => {
         setLoading(true)
         setIsError(false)
         axios
-            .get(`https://nc-games-site.herokuapp.com/api/reviews/${id}/comments`)
+            .get(`https://nc-games-site.herokuapp.com/api/reviews/${review_id}/comments`)
             .then(({ data }) => {
+                console.log(data)
+                if (data.comments) { setComments(data.comments) }
+                if (data.status) { setNoComments(true) }
                 setLoading(false)
-
-                setComments(data.comments)
             }).catch(err => {
                 setIsError(true)
                 setLoading(false)
             })
-    }, [id])
+    }, [review_id])
 
     return (
         <>
             <h2>comments</h2>
-            {isError ? <h2>400: this category does not exist</h2> : null}
+            {isError ? <h2>be the first to leave a comment</h2> : null}
+            {noComments ? <h2>be the first to leave a comment</h2> : null}
             {loading ? <div className="loader"></div> : null}
-            <div className="container">
+            <CommentAdder setComments={setComments}
+                review_id={review_id} className="" />
+            <div className="">
                 {comment.map(
                     ({
                         comment_id,
@@ -47,7 +52,6 @@ const Comments = ({ review_id }) => {
                                 created_at={created_at}
                             />
                         );
-
                     }
                 )}
             </div>
