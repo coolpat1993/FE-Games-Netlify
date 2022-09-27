@@ -2,7 +2,6 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import CategoriesCard from "./categoriesCard"
 
-
 const AllCategories = () => {
     const [loading, setLoading] = useState(true)
     const [categories, setcategories] = useState([])
@@ -17,7 +16,7 @@ const AllCategories = () => {
     }, [])
 
     return (
-        <div>
+        <>
             <h2>Categories</h2>
             {loading ? <div className="loader"></div> : null}
             <div className="container">
@@ -36,7 +35,7 @@ const AllCategories = () => {
                     }
                 )}
             </div>
-        </div>
+        </>
     )
 }
 

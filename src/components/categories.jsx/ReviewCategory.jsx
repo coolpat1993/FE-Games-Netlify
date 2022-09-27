@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 import AllReviewsCard from "../allReviews/allReviewsCard"
 import { useParams } from "react-router-dom"
 
-
 const ReviewCategory = () => {
     const params = useParams()
     const category = params.category
@@ -27,7 +26,7 @@ const ReviewCategory = () => {
     }, [category])
 
     return (
-        <div>
+        <>
             <h2>{category}</h2>
             {isError ? <h2>400: this category does not exist</h2> : null}
             {loading ? <div className="loader"></div> : null}
@@ -53,13 +52,14 @@ const ReviewCategory = () => {
                                 review_img_url={review_img_url}
                                 votes={votes}
                                 comments={comment_count}
+                                review_id={review_id}
                             />
                         );
 
                     }
                 )}
             </div>
-        </div>
+        </>
     )
 }
 
