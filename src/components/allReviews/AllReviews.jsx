@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
-import AllReviewsCard from "./allReviewsCard"
+import AllReviewsCard from "./AllReviewsCard"
 
 const AllReviews = () => {
     const [loading, setLoading] = useState(true)
@@ -16,7 +16,7 @@ const AllReviews = () => {
     }, [])
 
     return (
-        <div>
+        <>
             <h2>all reviews</h2>
             {loading ? <div className="loader"></div> : null}
             <div className="container">
@@ -48,7 +48,7 @@ const AllReviews = () => {
                     }
                 )}
             </div>
-        </div>
+        </>
     )
 }
 

@@ -1,11 +1,11 @@
 import "./App.css";
-import AllReviews from "./components/allReviews/allReviews";
-import Header from "./Header-Nav/Header";
-import Nav from "./Header-Nav/Nav";
+import AllReviews from "./components/allReviews/AllReviews";
+import Header from "./components/Header-Nav/Header";
+import Nav from "./components/Header-Nav/Nav";
 import { Route, Routes } from "react-router-dom";
-import AllCategories from "./components/categories.jsx/allCategories";
+import AllCategories from "./components/categories.jsx/AllCategories";
 import ReviewCategory from "./components/categories.jsx/ReviewCategory";
-import SingleReview from "./components/SingleReview/singleReview";
+import SingleReview from "./components/SingleReview/SingleReview";
 
 function App() {
   return (
