@@ -2,7 +2,6 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import AllReviewsCard from "./allReviewsCard"
 
-
 const AllReviews = () => {
     const [loading, setLoading] = useState(true)
     const [reviews, setReviews] = useState([])
@@ -19,8 +18,9 @@ const AllReviews = () => {
     return (
         <div>
             <h2>all reviews</h2>
-            {loading ? <div class="loader"></div> : null}
+            {loading ? <div className="loader"></div> : null}
             <div className="container">
+
                 {reviews.map(
                     ({
                         review_id,
@@ -30,7 +30,7 @@ const AllReviews = () => {
                         owner,
                         review_img_url,
                         votes,
-                        comment_count,
+                        comment_count
                     }) => {
                         return (
                             <AllReviewsCard
@@ -42,9 +42,9 @@ const AllReviews = () => {
                                 review_img_url={review_img_url}
                                 votes={votes}
                                 comments={comment_count}
+                                review_id={review_id}
                             />
                         );
-
                     }
                 )}
             </div>

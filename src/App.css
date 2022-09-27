@@ -87,7 +87,7 @@ a:active {
   border-top: 16px solid #3498db; /* Blue */
   border-radius: 50%;
   width: 120px;
-  margin:auto;
+  margin: auto;
   height: 120px;
   animation: spin 2s linear infinite;
 }
@@ -116,4 +116,18 @@ a:active {
 
 .item {
   margin: 10px;
+}
+
+
+.singleColumn {
+  padding: 10px;
+  height: auto;
+  margin: 10px;
+  background-color: #cccccc;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
