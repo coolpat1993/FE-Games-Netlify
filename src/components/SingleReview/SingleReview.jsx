@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios"
-import Comments from "./comments/comments";
-import SingleReviewCard from "./singleReviewCard";
+import Comments from "./comments/Comments";
+import SingleReviewCard from "./SingleReviewCard";
 
 const SingleReview = () => {
     const params = useParams()
@@ -20,7 +20,7 @@ const SingleReview = () => {
     }, [review_id])
 
     return (
-        <div>
+        <>
             {loading ? <div className="loader"></div> : null}
             <SingleReviewCard className="container"
                 key={reviews.review_id}
@@ -32,9 +32,10 @@ const SingleReview = () => {
                 votes={reviews.votes}
                 comments={reviews.comment_count}
                 review_body={reviews.review_body}
+                review_id={reviews.review_id}
             />
             <Comments review_id={params} />
-        </div>
+        </>
     )
 };
 

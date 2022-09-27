@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
-import CommentsCard from "./commentsCard"
+import CommentsCard from "./CommentsCard"
 
 
 const Comments = ({ review_id }) => {
@@ -15,7 +15,6 @@ const Comments = ({ review_id }) => {
         axios
             .get(`https://nc-games-site.herokuapp.com/api/reviews/${id}/comments`)
             .then(({ data }) => {
-                console.log(data)
                 setLoading(false)
 
                 setComments(data.comments)

@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
-import CategoriesCard from "./categoriesCard"
+import CategoriesCard from "./CategoriesCard"
 
 const AllCategories = () => {
     const [loading, setLoading] = useState(true)
