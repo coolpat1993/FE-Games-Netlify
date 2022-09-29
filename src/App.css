@@ -4,6 +4,9 @@ a {
 h2 {
   text-align: center;
 }
+body {
+  font-family: Geneva, Verdana, sans-serif;
+}
 
 .container {
   margin: auto;
@@ -144,6 +147,27 @@ a:active {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.red {
-  background-color: #36f446;
+.orange {
+  background-color: #da9c62;
+}
+
+.blue {
+  background-color: #b498da;
+}
+
+.commentAdder {
+  width: 40%;
+  height: 100px;
+  padding: 10px;
+  background-color: #ffffff;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.bold {
+  font-weight: bold;
 }

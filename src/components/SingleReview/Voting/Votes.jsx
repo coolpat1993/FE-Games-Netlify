@@ -4,6 +4,7 @@ import { useState } from "react";
 const UpvoteButton = ({ review_id, setTrueVotes, votes }) => {
     const [upVote, setUpVote] = useState(false)
     const [downVote, setdownVote] = useState(false)
+
     const HandleSubmit = (voteAmount) => {
         return axios.patch(`https://nc-games-site.herokuapp.com/api/reviews/${review_id}`, { inc_votes: voteAmount }).then(({ data }) => {
             setTrueVotes(data.review.votes)
@@ -14,13 +15,13 @@ const UpvoteButton = ({ review_id, setTrueVotes, votes }) => {
     let downVoted = ''
 
     if (upVote) {
-        upVoted = 'red'
+        upVoted = 'orange'
         downVoted = ''
     }
 
     if (downVote) {
         upVoted = ''
-        downVoted = 'red'
+        downVoted = 'blue'
     }
 
     return (
