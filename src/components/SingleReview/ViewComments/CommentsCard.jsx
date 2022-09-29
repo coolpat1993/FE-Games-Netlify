@@ -1,9 +1,30 @@
+import axios from "axios";
+import { useState } from "react"
 
-export default function CommentsCard({ body, author, votes, created_at }) {
-	return (<article className="singleComment" >
-		<h3>{author}</h3>
-		<p>{body}</p>
-		<p>votes:{votes}</p>
-		<p>{created_at}</p>
-	</article>)
+export default function CommentsCard({ body, author, votes, created_at, comment_id }) {
+	const [hidden, setHidden] = useState(false)
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setHidden(true)
+		axios
+			.delete(`https://nc-games-site.herokuapp.com/api/comments/${comment_id}`)
+			.catch((err) => {
+				console.log(err)
+				setHidden(false)
+			})
+	}
+
+	if (hidden) {
+		return <h2>comment was deleted</h2>
+	}
+
+	return (
+		<article className="singleComment" >
+			<h3>{author}</h3>
+			<p>{body}</p>
+			<p>votes:{votes}</p>
+			<p>{created_at}</p>
+			<button aria-label="Delete Comment" onClick={(e) => handleSubmit(e)}>Delete Comment</button>
+		</article>)
 }
