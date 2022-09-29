@@ -18,7 +18,7 @@ const Comments = ({ review_id }) => {
             .then(({ data }) => {
                 console.log(data)
                 if (data.comments) { setComments(data.comments) }
-                if (data.status) { setNoComments(true) }
+                if (data.msg === "This comment was not found") { setNoComments(true) }
                 setLoading(false)
             }).catch(err => {
                 setIsError(true)
@@ -29,7 +29,7 @@ const Comments = ({ review_id }) => {
     return (
         <>
             <h2>comments</h2>
-            {isError ? <h2>be the first to leave a comment</h2> : null}
+            {isError ? <h2>internal server error</h2> : null}
             {noComments ? <h2>be the first to leave a comment</h2> : null}
             {loading ? <div className="loader"></div> : null}
             <CommentAdder setComments={setComments}
