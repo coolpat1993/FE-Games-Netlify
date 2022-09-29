@@ -26,7 +26,7 @@ const CommentAdder = ({ setComments, review_id }) => {
 
 
     return (
-        <form className="center" autocomplete="off" onSubmit={(e) => handleSubmit(e)}>
+        <form className="center" autoComplete="off" onSubmit={(e) => handleSubmit(e)}>
             <label htmlFor="newComment"></label>
             <textarea
                 className="commentAdder"

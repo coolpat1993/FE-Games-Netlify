@@ -45,6 +45,7 @@ const Comments = ({ review_id }) => {
                         return (
                             <CommentsCard
                                 key={comment_id}
+                                comment_id={comment_id}
                                 body={body}
                                 author={author}
                                 votes={votes}
