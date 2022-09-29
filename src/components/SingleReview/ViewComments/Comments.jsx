@@ -16,7 +16,6 @@ const Comments = ({ review_id }) => {
         axios
             .get(`https://nc-games-site.herokuapp.com/api/reviews/${review_id}/comments`)
             .then(({ data }) => {
-                console.log(data)
                 if (data.comments) { setComments(data.comments) }
                 if (data.msg === "This comment was not found") { setNoComments(true) }
                 setLoading(false)

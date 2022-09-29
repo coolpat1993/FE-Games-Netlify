@@ -1,5 +1,3 @@
-
-
 const OrderBy = ({ setOrderBy, orderBy }) => {
     return (
         <button aria-label="change sort order" onClick={() => {

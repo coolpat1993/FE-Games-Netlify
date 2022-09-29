@@ -1,7 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "../../Users/User";
 
 const CommentAdder = ({ setComments, review_id }) => {
+    let user = useContext(UserContext)
+    let userName = user.loggedInUser.username
     const [newComment, setNewComment] = useState('')
     const [posting, setPosting] = useState(false)
     const handleSubmit = (e) => {
@@ -10,9 +14,8 @@ const CommentAdder = ({ setComments, review_id }) => {
         axios
             .post(`https://nc-games-site.herokuapp.com/api/reviews/${review_id}/comments`, {
                 body: newComment,
-                author: "tickle122",
+                author: userName,
             }).then(({ data }) => {
-                console.log(data.newComment)
                 setComments((currComments) => {
                     return [data.newComment, ...currComments]
                 })
@@ -30,7 +33,7 @@ const CommentAdder = ({ setComments, review_id }) => {
                 id="newComment"
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
-                placeholder="please leave a comment"
+                placeholder={`You are posting publically as ${userName}`}
                 required>
             </textarea>
             <br></br>

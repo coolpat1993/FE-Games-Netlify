@@ -5,6 +5,7 @@ const Nav = () => {
         <nav className='contentSpreadX'>
             <Link to="/">Home</Link>
             <Link to="/reviews">All reviews</Link>
+            <Link to="/users">Users</Link>
         </nav>
     )
 }
