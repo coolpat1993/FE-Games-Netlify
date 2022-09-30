@@ -7,6 +7,7 @@ import AllCategories from "./components/categories.jsx/AllCategories";
 import ReviewCategory from "./components/categories.jsx/ReviewCategory";
 import SingleReview from "./components/SingleReview/SingleReview";
 import AllUsers from "./components/Users/AllUsers";
+import FourOhFour from "./components/FourOhFour/FourOhFour";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/reviews/:category" element={<ReviewCategory />} />
           <Route path="/users" element={<AllUsers />} />
           <Route path="/reviews/review/:review_id" element={<SingleReview />} />
+          <Route path="/*" element={<FourOhFour />} />
         </Routes>
       </header>
     </div>

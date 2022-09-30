@@ -10,6 +10,7 @@ const SingleReview = () => {
     const [isError, setIsError] = useState(false)
     const [loading, setLoading] = useState(true)
     const [reviews, setReviews] = useState([])
+    const [trueComments, setTrueComments] = useState('')
     useEffect(() => {
         setLoading(true)
         setIsError(false)
@@ -18,15 +19,12 @@ const SingleReview = () => {
             .then(({ data }) => {
                 setReviews(data.review)
                 setLoading(false)
+                setTrueComments(data.review.comment_count)
             }).catch(err => {
                 setIsError(true)
                 setLoading(false)
             })
     }, [review_id])
-
-    // if (isError) {
-    //     return <h2>this review doest not exist</h2>
-    // }
 
     return (
         <>
@@ -40,11 +38,14 @@ const SingleReview = () => {
                 owner={reviews.owner}
                 review_img_url={reviews.review_img_url}
                 votes={reviews.votes}
-                comments={reviews.comment_count}
                 review_body={reviews.review_body}
                 review_id={reviews.review_id}
+                comments={trueComments}
+                setTrueComments={setTrueComments}
             />
-                <Comments review_id={review_id} /> </>
+                <Comments review_id={review_id}
+                    setTrueComments={setTrueComments}
+                    comments={trueComments} /> </>
 
                 : null}
         </>

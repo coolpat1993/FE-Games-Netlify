@@ -4,7 +4,7 @@ import CommentAdder from "../AddComment/CommentAdder"
 import CommentsCard from "./CommentsCard"
 
 
-const Comments = ({ review_id }) => {
+const Comments = ({ review_id, setTrueComments, comments }) => {
 
     const [loading, setLoading] = useState(true)
     const [isError, setIsError] = useState(false)
@@ -32,7 +32,9 @@ const Comments = ({ review_id }) => {
             {noComments ? <h2>be the first to leave a comment</h2> : null}
             {loading ? <div className="loader"></div> : null}
             <CommentAdder setComments={setComments}
-                review_id={review_id} className="" />
+                review_id={review_id} className=""
+                setTrueComments={setTrueComments}
+                comments={comments} />
             <div className="">
                 {comment.map(
                     ({
@@ -44,6 +46,8 @@ const Comments = ({ review_id }) => {
                     }) => {
                         return (
                             <CommentsCard
+                                comments={comments}
+                                setTrueComments={setTrueComments}
                                 key={comment_id}
                                 comment_id={comment_id}
                                 body={body}

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../Users/User";
 
-const CommentAdder = ({ setComments, review_id }) => {
+const CommentAdder = ({ setComments, review_id, setTrueComments }) => {
     let user = useContext(UserContext)
     let userName = user.loggedInUser.username
     const [newComment, setNewComment] = useState('')
@@ -11,6 +11,7 @@ const CommentAdder = ({ setComments, review_id }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setPosting(true)
+        setTrueComments((comments) => +comments + 1)
         axios
             .post(`https://nc-games-site.herokuapp.com/api/reviews/${review_id}/comments`, {
                 body: newComment,
@@ -37,7 +38,7 @@ const CommentAdder = ({ setComments, review_id }) => {
                 required>
             </textarea>
             <br></br>
-            <button>submit</button>
+            {!posting ? <button>submit</button> : null}
             {posting ? <p>your comment is being posted...</p> : null}
         </form>
     )

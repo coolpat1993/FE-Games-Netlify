@@ -4,8 +4,15 @@ a {
 h2 {
   text-align: center;
 }
+h1 {
+  text-align: center;
+}
+h3 {
+  text-align: center;
+}
 body {
   font-family: Geneva, Verdana, sans-serif;
+  margin: 0;
 }
 
 .container {
@@ -21,56 +28,15 @@ body {
   height: 200px;
 }
 
-.column {
-  padding: 16px;
-  height: 350px;
-  margin: 10px;
-  background-color: #cccccc;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
 .contentSpreadX {
   display: flex;
   justify-content: space-around;
 }
 
 /* The navigation bar */
-.navbar {
-  overflow: hidden;
-  background-color: rgb(217, 212, 212);
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
-}
 
 /* Links inside the navbar */
-.navbar Link {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change background on mouse-over */
-.navbar nav Link:hover {
-  background: #ddd;
-  color: rgb(183, 176, 176);
-}
-
-/* Main content */
-main {
-  margin-top: 150px; /* Add a top margin to avoid content overlay */
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  padding: 10px;
-}
-
-a:link,
+.navbar a:link,
 a:visited {
   background-color: #f44336;
   color: white;
@@ -80,9 +46,34 @@ a:visited {
   display: inline-block;
 }
 
-a:hover,
+/* Change background on mouse-over */
+.navbar a:hover,
 a:active {
   background-color: red;
+}
+
+.category-card a:link,
+a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Change background on mouse-over */
+.category-card a:hover,
+a:active {
+  background-color: red;
+}
+
+/* Main content */
+main {
+  margin-top: 150px; /* Add a top margin to avoid content overlay */
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .loader {
@@ -104,11 +95,6 @@ a:active {
   }
 }
 
-.userIcon {
-  border: 1px solid #ddd;
-  padding: 5px;
-  width: 25px;
-}
 
 .containerF {
   display: flex;
@@ -117,14 +103,10 @@ a:active {
   flex-direction: row;
 }
 
-.item {
-  margin: 10px;
-}
 
 .singleColumn {
   padding: 10px;
   height: auto;
-  margin: 10px;
   background-color: #cccccc;
   display: flex;
   flex-direction: column;
@@ -170,4 +152,36 @@ a:active {
 
 .bold {
   font-weight: bold;
+}
+
+.review-card {
+  padding: 10px;
+  position: relative;
+  text-align: left;
+}
+
+.img__wrap {
+  position: relative;
+}
+
+.img__description {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30%;
+  color: #fff;
+  visibility: hidden;
+  font-size: larger;
+  opacity: 0;
+  text-shadow: 2px 2px 20px #000000;
+
+  /* transition effect. not necessary */
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.img__wrap:hover .img__description {
+  visibility: visible;
+  opacity: 1;
 }

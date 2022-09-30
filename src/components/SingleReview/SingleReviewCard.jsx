@@ -3,12 +3,6 @@ import { useState } from "react"
 
 export default function SingleReviewCard({ title, owner, designer, review_img_url, votes, category, comments, review_id, review_body }) {
 	const [trueVotes, setTrueVotes] = useState(votes)
-	/* 
-	state  (votes)
-	useState
-	[votes]
-	*/
-
 
 	return (<article className="singleReview singleColumn" >
 		<h3>{title}</h3>
