@@ -19,7 +19,7 @@ body {
   margin: auto;
   width: 50%;
   display: grid;
-  grid-template-columns: 300px 300px 300px;
+  grid-template-columns: auto auto auto;
   text-align: center;
 }
 
@@ -95,14 +95,12 @@ main {
   }
 }
 
-
 .containerF {
   display: flex;
   color: rgb(255, 255, 255);
   background-color: #f44336;
   flex-direction: row;
 }
-
 
 .singleColumn {
   padding: 10px;
@@ -160,28 +158,7 @@ main {
   text-align: left;
 }
 
-.img__wrap {
-  position: relative;
-}
-
-.img__description {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 30%;
-  color: #fff;
-  visibility: hidden;
-  font-size: larger;
-  opacity: 0;
-  text-shadow: 2px 2px 20px #000000;
-
-  /* transition effect. not necessary */
-  transition: opacity 0.2s, visibility 0.2s;
-}
-
-.img__wrap:hover .img__description {
-  visibility: visible;
-  opacity: 1;
+.img__wrap a:hover {
+  background-color: rgb(255, 0, 0);
+  filter: brightness(90%);
 }

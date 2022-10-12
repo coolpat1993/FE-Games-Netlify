@@ -5,7 +5,7 @@ const SearchBox = ({ setSearch, Search }) => {
         setSearch(queryString)
     }
 
-    return (<form autocomplete="off" onSubmit={(e) => handleSubmit(e)}>
+    return (<form autoComplete="off" onSubmit={(e) => handleSubmit(e)}>
         <select name="sort by" id="sort_by" >
             <option value="&title=">Title</option>
             <option value="&owner=">Owner</option>
@@ -16,8 +16,7 @@ const SearchBox = ({ setSearch, Search }) => {
             className="Searcher"
             id="Searcher"
             value={Search}
-            placeholder="search"
-            required>
+            placeholder="search">
         </input>
         <br></br>
         <button>submit</button>

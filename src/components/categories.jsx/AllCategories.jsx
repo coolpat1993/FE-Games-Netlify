@@ -1,26 +1,18 @@
 import axios from "axios"
-import { useState, useEffect } from "react"
 import CategoriesCard from "./CategoriesCard"
+import { useQuery } from "@tanstack/react-query"
 
 const AllCategories = () => {
-    const [loading, setLoading] = useState(true)
-    const [categories, setcategories] = useState([])
-    useEffect(() => {
-        setLoading(true)
-        axios
+    const { data, isLoading } = useQuery(['categories'], () => {
+        return axios
             .get('https://nc-games-site.herokuapp.com/api/categories')
-            .then(({ data }) => {
-                setcategories(data.categories)
-                setLoading(false)
-            })
-    }, [])
-
+    })
     return (
         <>
             <h2>Categories</h2>
-            {loading ? <div className="loader"></div> : null}
+            {isLoading ? <div className="loader"></div> : null}
             <div className="container">
-                {categories.map(
+                {data?.data.categories.map(
                     ({
                         slug,
                         description

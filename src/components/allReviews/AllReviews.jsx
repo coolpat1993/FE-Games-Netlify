@@ -1,34 +1,22 @@
 import axios from "axios"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import AllReviewsCard from "./AllReviewsCard"
 import OrderBy from "./ReviewFilters/OrderBy"
 import CategoryFilter from "./ReviewFilters/CategoryFilter"
 import SortBy from "./ReviewFilters/SortBy"
 import SearchBox from "./ReviewFilters/SearchBox"
+import { useQuery } from "@tanstack/react-query"
 
 const AllReviews = () => {
-    const [loading, setLoading] = useState(true)
-    const [reviews, setReviews] = useState([])
     const [search, setSearch] = useState([])
     const [orderBy, setOrderBy] = useState('order_by=DESC')
     const [sortBy, setSortBy] = useState('&sort_by=created_at')
     const [filterBy, setFilterBy] = useState('')
-    const [isError, setIsError] = useState('')
-    useEffect(() => {
-        setLoading(true)
-        setIsError(false)
-        axios
-            .get(`https://nc-games-site.herokuapp.com/api/reviews?${orderBy}${sortBy}${filterBy}${search}`)
-            .then(({ data }) => {
-                setLoading(false)
-                setReviews(data.reviews)
-            }).catch((err) => {
-                setLoading(false)
-                setIsError(true)
-                console.log(err)
-            })
 
-    }, [orderBy, sortBy, filterBy, search])
+    const { data, isLoading, isError } = useQuery(['reviews', orderBy, sortBy, filterBy, search], () => {
+        return axios
+            .get(`https://nc-games-site.herokuapp.com/api/reviews?${orderBy}${sortBy}${filterBy}${search}`)
+    })
     return (
         <>
             <div className="center">
@@ -41,10 +29,10 @@ const AllReviews = () => {
             {isError ? <h2 className="center">there are no reviews by those parameters</h2> :
                 <>
                     <h2>Viewing all {filterBy.slice(10)} reviews, sorted by {sortBy.slice(9)}, in order {orderBy.slice(9)}</h2>
-                    {loading ? <div className="loader"></div> : null}
+                    {isLoading ? <div className="loader"></div> : null}
                     <div className="container">
 
-                        {reviews.map(
+                        {data?.data.reviews.map(
                             ({
                                 review_id,
                                 title,
