@@ -14,7 +14,6 @@ export default function CommentsCard({ body, author, votes, created_at, comment_
 		axios
 			.delete(`https://nc-games-site.herokuapp.com/api/comments/${comment_id}`)
 			.catch((err) => {
-				console.log(err)
 				setHidden(false)
 			})
 	}

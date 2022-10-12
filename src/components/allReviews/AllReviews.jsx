@@ -12,10 +12,15 @@ const AllReviews = () => {
     const [orderBy, setOrderBy] = useState('order_by=DESC')
     const [sortBy, setSortBy] = useState('&sort_by=created_at')
     const [filterBy, setFilterBy] = useState('')
+    const [isError, setIsError] = useState(false)
 
-    const { data, isLoading, isError } = useQuery(['reviews', orderBy, sortBy, filterBy, search], () => {
+    const { data, isLoading } = useQuery(['reviews', orderBy, sortBy, filterBy, search], () => {
+        setIsError(false)
         return axios
             .get(`https://nc-games-site.herokuapp.com/api/reviews?${orderBy}${sortBy}${filterBy}${search}`)
+            .catch(() => {
+                setIsError(true)
+            })
     })
     return (
         <>
